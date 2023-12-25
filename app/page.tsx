@@ -1,3 +1,4 @@
+import AboutSection from '@/sections/about';
 import DividerSection from '@/sections/divider';
 import IntroSection from '@/sections/intro';
 
@@ -6,6 +7,7 @@ export default function Home() {
     <main className="flex flex-col items-center px-4">
       <IntroSection />
       <DividerSection />
+      <AboutSection />
     </main>
   );
 }
