@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useActiveSectionContext } from '@/context/activeSectionContext';
 import { SectionNameType } from '@/types';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
@@ -10,16 +11,11 @@ import { links } from '@/lib/data';
 type NavLinkProps = {
   name: SectionNameType;
   linkHref: (typeof links)[number]['hash'];
-  activeSection: SectionNameType;
-  handleActiveSection: (name: SectionNameType) => void;
 };
 
-function NavLink({
-  name,
-  linkHref,
-  activeSection,
-  handleActiveSection,
-}: NavLinkProps) {
+function NavLink({ name, linkHref }: NavLinkProps) {
+  const { activeSection, setActiveSection } = useActiveSectionContext();
+
   return (
     <motion.li
       key={linkHref}
@@ -33,7 +29,7 @@ function NavLink({
           'flex w-full items-center justify-center p-3 transition hover:text-gray-950',
           { 'text-gray-950': name === activeSection }
         )}
-        onClick={() => handleActiveSection(name)}
+        onClick={() => setActiveSection(name)}
       >
         {name}
         {name === activeSection && (
