@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useActiveSectionContext } from '@/context/activeSectionContext';
-import { SectionNameType } from '@/types';
+import type { SectionNameType } from '@/types';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 
@@ -14,7 +14,8 @@ type NavLinkProps = {
 };
 
 function NavLink({ name, linkHref }: NavLinkProps) {
-  const { activeSection, setActiveSection } = useActiveSectionContext();
+  const { activeSection, setActiveSection, setTimeOfLastClick } =
+    useActiveSectionContext();
 
   return (
     <motion.li
@@ -29,7 +30,10 @@ function NavLink({ name, linkHref }: NavLinkProps) {
           'flex w-full items-center justify-center p-3 transition hover:text-gray-950',
           { 'text-gray-950': name === activeSection }
         )}
-        onClick={() => setActiveSection(name)}
+        onClick={() => {
+          setActiveSection(name);
+          setTimeOfLastClick(Date.now());
+        }}
       >
         {name}
         {name === activeSection && (

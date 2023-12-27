@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode, createContext, useContext, useMemo, useState } from 'react';
-import { SectionNameType } from '@/types';
+import type { SectionNameType } from '@/types';
 
 // Props for the ActiveSectionProvider component
 type ActiveSectionProviderProps = {
@@ -12,6 +12,8 @@ type ActiveSectionProviderProps = {
 type ActiveSectionContextType = {
   activeSection: SectionNameType;
   setActiveSection: React.Dispatch<React.SetStateAction<SectionNameType>>;
+  timeOfLastClick: number;
+  setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>;
 };
 
 // Create a context for managing the active section state
@@ -25,11 +27,18 @@ export default function ActiveSectionProvider({
 }: ActiveSectionProviderProps) {
   // State to track the currently active section
   const [activeSection, setActiveSection] = useState<SectionNameType>('Home');
+  // we need to keep track of this to disable the observer temporarily when user clicks on a link
+  const [timeOfLastClick, setTimeOfLastClick] = useState(0);
 
   // Memoized context value to avoid unnecessary renders
   const value = useMemo(
-    () => ({ activeSection, setActiveSection }),
-    [activeSection]
+    () => ({
+      activeSection,
+      setActiveSection,
+      timeOfLastClick,
+      setTimeOfLastClick,
+    }),
+    [activeSection, timeOfLastClick]
   );
 
   return (

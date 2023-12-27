@@ -1,12 +1,17 @@
+'use client';
+
 import { Fragment } from 'react';
 
 import { projectsData } from '@/lib/data';
+import useInViewSection from '@/hooks/useInViewSection';
 import ProjectCard from '@/components/projectCard';
 import SectionTitle from '@/components/sectionTitle';
 
 function ProjectsSection() {
+  const ref = useInViewSection({ sectionName: 'Projects', threshold: 0.5 });
+
   return (
-    <section className="mb-28 scroll-mt-28 sm:mb-40" id="projects">
+    <section className="mb-28 scroll-mt-28 sm:mb-40" id="projects" ref={ref}>
       <SectionTitle title="my projects" />
       <div>
         {projectsData.map((data) => (
