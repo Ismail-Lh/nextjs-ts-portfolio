@@ -6,7 +6,7 @@ import SectionTitle from '@/components/sectionTitle';
 
 function ProjectsSection() {
   return (
-    <section className="mb-28 sm:mb-40">
+    <section className="mb-28 scroll-mt-28 sm:mb-40" id="projects">
       <SectionTitle title="my projects" />
       <div>
         {projectsData.map((data) => (
