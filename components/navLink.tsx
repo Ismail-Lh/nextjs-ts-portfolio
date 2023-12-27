@@ -1,21 +1,54 @@
-import React from 'react';
+'use client';
+
 import Link from 'next/link';
+import { SectionNameType } from '@/types';
+import clsx from 'clsx';
+import { motion } from 'framer-motion';
+
+import { links } from '@/lib/data';
 
 type NavLinkProps = {
-  name: string;
-  linkHref: string;
+  name: SectionNameType;
+  linkHref: (typeof links)[number]['hash'];
+  activeSection: SectionNameType;
+  handleActiveSection: (name: SectionNameType) => void;
 };
 
-function NavLink({ name, linkHref }: NavLinkProps) {
+function NavLink({
+  name,
+  linkHref,
+  activeSection,
+  handleActiveSection,
+}: NavLinkProps) {
   return (
-    <li key={linkHref} className="flex h-3/4 items-center justify-center">
+    <motion.li
+      key={linkHref}
+      className="relative flex h-3/4 items-center justify-center"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+    >
       <Link
         href={linkHref}
-        className="flex w-full items-center justify-center p-3 transition hover:text-gray-950"
+        className={clsx(
+          'flex w-full items-center justify-center p-3 transition hover:text-gray-950',
+          { 'text-gray-950': name === activeSection }
+        )}
+        onClick={() => handleActiveSection(name)}
       >
         {name}
+        {name === activeSection && (
+          <motion.span
+            className="absolute inset-0 -z-10 rounded-full bg-gray-100"
+            layoutId="activeSection"
+            transition={{
+              type: 'spring',
+              stiffness: 380,
+              damping: 30,
+            }}
+          />
+        )}
       </Link>
-    </li>
+    </motion.li>
   );
 }
 
