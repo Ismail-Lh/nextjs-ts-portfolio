@@ -2,6 +2,7 @@ import AboutSection from '@/sections/about';
 import DividerSection from '@/sections/divider';
 import IntroSection from '@/sections/intro';
 import ProjectsSection from '@/sections/projects';
+import SkillsSection from '@/sections/skills';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <DividerSection />
       <AboutSection />
       <ProjectsSection />
+      <SkillsSection />
     </main>
   );
 }

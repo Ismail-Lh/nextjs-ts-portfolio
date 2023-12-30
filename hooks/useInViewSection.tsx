@@ -7,10 +7,13 @@ import { useInView } from 'react-intersection-observer';
 
 type UseInViewSectionProps = {
   sectionName: SectionNameType;
-  threshold: number;
+  threshold?: number;
 };
 
-function useInViewSection({ sectionName, threshold }: UseInViewSectionProps) {
+function useInViewSection({
+  sectionName,
+  threshold = 0.75,
+}: UseInViewSectionProps) {
   // Ensure that the threshold is within the range [0, 1]
   const validatedThreshold = Math.min(1, Math.max(0, threshold));
 
