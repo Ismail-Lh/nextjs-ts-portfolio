@@ -1,18 +1,29 @@
+import sendEmail from '@/actions/sendEmail';
 import { FaPaperPlane } from 'react-icons/fa';
 
 function ContactForm() {
   return (
-    <form className="mt-10 flex flex-col">
+    <form
+      className="mt-10 flex flex-col"
+      action={async (formData) => {
+        await sendEmail(formData);
+      }}
+    >
       <input
         className="h-14 rounded-lg border border-black/10 px-4"
         type="email"
-        name="email"
+        required
+        maxLength={500}
+        name="senderEmail"
         id="email"
         placeholder="Your email address"
       />
       <textarea
         className="my-3 h-52 rounded-lg border border-black/10 p-4"
+        name="message"
         placeholder="Your message"
+        required
+        maxLength={500}
       />
       <button
         type="submit"
