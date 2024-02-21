@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useActiveSectionContext } from '@/context/activeSectionContext';
 import { motion } from 'framer-motion';
 import { BsArrowRight, BsLinkedin } from 'react-icons/bs';
 import { FaGithubSquare } from 'react-icons/fa';
@@ -7,6 +8,7 @@ import { HiDownload } from 'react-icons/hi';
 import SocialLink from './socialLink';
 
 function IntroLinks() {
+  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   return (
     <motion.div
       className="flex flex-col items-center justify-center gap-2 px-4 text-lg font-medium sm:flex-row"
@@ -19,6 +21,10 @@ function IntroLinks() {
       <Link
         href="#contact"
         className="group flex items-center gap-2 rounded-full border border-black/10 bg-gray-900 px-7 py-3 text-white outline-none transition-all hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105"
+        onClick={() => {
+          setActiveSection('Contact');
+          setTimeOfLastClick(Date.now());
+        }}
       >
         Contact me here{' '}
         <BsArrowRight className="opacity-70 transition group-hover:translate-x-2" />

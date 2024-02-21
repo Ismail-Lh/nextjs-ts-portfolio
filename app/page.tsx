@@ -1,4 +1,5 @@
 import AboutSection from '@/sections/about';
+import ContactSection from '@/sections/contact';
 import DividerSection from '@/sections/divider';
 import ExperienceSection from '@/sections/experience';
 import IntroSection from '@/sections/intro';
@@ -14,6 +15,7 @@ export default function Home() {
       <ProjectsSection />
       <SkillsSection />
       <ExperienceSection />
+      <ContactSection />
     </main>
   );
 }
