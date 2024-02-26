@@ -1,12 +1,18 @@
 import sendEmail from '@/actions/sendEmail';
-import { FaPaperPlane } from 'react-icons/fa';
+import toast from 'react-hot-toast';
+
+import SubmitButton from '@/components/submitButton';
 
 function ContactForm() {
   return (
     <form
       className="mt-10 flex flex-col"
       action={async (formData) => {
-        await sendEmail(formData);
+        const { error } = await sendEmail(formData);
+
+        if (error) toast.error(error);
+
+        toast.success('Your message has been successfully sent.');
       }}
     >
       <input
@@ -25,13 +31,7 @@ function ContactForm() {
         required
         maxLength={5000}
       />
-      <button
-        type="submit"
-        className="group flex h-[3rem] w-[8rem] items-center justify-center gap-2 rounded-full bg-gray-900 text-white outline-none transition-all hover:scale-110 hover:bg-gray-950 focus:scale-110 active:scale-105"
-      >
-        Send{' '}
-        <FaPaperPlane className="text-xs opacity-70 transition-all group-hover:-translate-y-1 group-hover:translate-x-1" />
-      </button>
+      <SubmitButton />
     </form>
   );
 }
