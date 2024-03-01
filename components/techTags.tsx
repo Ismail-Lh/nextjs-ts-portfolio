@@ -10,7 +10,7 @@ function TechTags({ tags }: TechTagsProps) {
       {tags.map((tag) => (
         <li
           key={tag}
-          className="rounded-full bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white"
+          className="rounded-full bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white dark:text-white/70"
         >
           {tag}
         </li>

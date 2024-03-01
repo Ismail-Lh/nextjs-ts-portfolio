@@ -13,7 +13,7 @@ function SocialLink({ link, icon: Icon, textStyle }: SocialLinkProps) {
     <Link
       href={link}
       target="_blank"
-      className={`${textStyle} flex items-center gap-2 rounded-full bg-white p-4 text-gray-700 outline-none transition-all hover:scale-110  focus:scale-110 active:scale-105`}
+      className={`${textStyle} flex items-center gap-2 rounded-full bg-white p-4 text-gray-700 outline-none transition-all hover:scale-110  focus:scale-110 active:scale-105 dark:bg-white/10 dark:text-white/60`}
     >
       <Icon />
     </Link>

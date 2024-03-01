@@ -26,7 +26,7 @@ const fadeInAnimationVariants = {
 function SkillTag({ skill, index }: SkillTagProps) {
   return (
     <motion.li
-      className="rounded-xl border border-black/[0.1] bg-white px-5 py-3 uppercase tracking-wide"
+      className="rounded-xl border border-black/[0.1] bg-white px-5 py-3 uppercase tracking-wide dark:bg-white/10 dark:text-white/80"
       variants={fadeInAnimationVariants}
       initial="initial"
       whileInView="animate"

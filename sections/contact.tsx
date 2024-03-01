@@ -22,7 +22,7 @@ function ContactSection() {
       className="w-[min(100%, 38rem)] mb-28 scroll-mt-28 text-center sm:mb-40"
     >
       <SectionTitle title="Contact Me" />
-      <p className="-mt-5 text-gray-700">
+      <p className="-mt-5 text-gray-700 dark:text-white/80">
         Please contact me directly at{' '}
         <a href="mailto:example@gmail.com" className="underline">
           example@gmail.com

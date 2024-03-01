@@ -27,8 +27,8 @@ function NavLink({ name, linkHref }: NavLinkProps) {
       <Link
         href={linkHref}
         className={clsx(
-          'flex w-full items-center justify-center p-3 transition hover:text-gray-950',
-          { 'text-gray-950': name === activeSection }
+          'flex w-full items-center justify-center p-3 transition hover:text-gray-950 dark:text-gray-500 dark:hover:text-gray-300',
+          { 'text-gray-950 dark:text-gray-200': name === activeSection }
         )}
         onClick={() => {
           setActiveSection(name);
@@ -38,7 +38,7 @@ function NavLink({ name, linkHref }: NavLinkProps) {
         {name}
         {name === activeSection && (
           <motion.span
-            className="absolute inset-0 -z-10 rounded-full bg-gray-100"
+            className="absolute inset-0 -z-10 rounded-full bg-gray-100 dark:bg-gray-800"
             layoutId="activeSection"
             transition={{
               type: 'spring',

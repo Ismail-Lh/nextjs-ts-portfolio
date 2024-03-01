@@ -9,7 +9,7 @@ type ProjectCardProps = (typeof projectsData)[number];
 function ProjectCard({ title, description, tags, imageUrl }: ProjectCardProps) {
   return (
     <ProjectCardContainer>
-      <div className="relative grid max-w-[42rem] grid-cols-2 overflow-hidden rounded-lg border border-black/5 bg-gray-100 transition hover:cursor-pointer  hover:bg-gray-200 group-even:pl-8 sm:h-[20rem] sm:pr-8">
+      <div className="relative grid max-w-[42rem] grid-cols-2 overflow-hidden rounded-lg border border-black/5 bg-gray-100 transition hover:cursor-pointer  hover:bg-gray-200 group-even:pl-8 dark:bg-white/10 dark:text-white dark:hover:bg-white/20 sm:h-[20rem] sm:pr-8">
         <ProjectDescription
           title={title}
           description={description}
